@@ -1,0 +1,28 @@
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional)
+.vscode/
+
+# NPM package lock
+package-lock.json
+
+# Private keys
+private-key.pem
+
+# Miscellaneous
+*.tgz
