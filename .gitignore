@@ -18,9 +18,6 @@ Thumbs.db
 # VS Code settings (optional)
 .vscode/
 
-# NPM package lock
-package-lock.json
-
 # Private keys
 private-key.pem
 
