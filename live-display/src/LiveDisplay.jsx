@@ -71,6 +71,7 @@ function buildCSS(accentHex = "#E9A228") {
     overflow: hidden;
     font-family: 'Satoshi', sans-serif;
     color: var(--text);
+    zoom: 0.951;
   }
 
   /* ─── Shimmer ─────────────────────────────────────────── */
@@ -106,6 +107,7 @@ function buildCSS(accentHex = "#E9A228") {
     background: rgba(5,2,0,0.96);
     backdrop-filter: blur(10px);
     z-index: 20;
+    overflow: visible;
   }
   .logo {
     font-family: 'Clash Display', sans-serif;
@@ -356,8 +358,9 @@ function buildCSS(accentHex = "#E9A228") {
   .landing-inner {
     position: relative; z-index: 1;
     width: 100%; max-width: 560px;
+    overflow: visible;
   }
-  .landing-hero { text-align: center; margin-bottom: 2.5rem; }
+  .landing-hero { text-align: center; margin-bottom: 2.5rem; overflow: visible;}
   .landing-logo {
     font-family: 'Clash Display', sans-serif;
     font-size: 48px; font-weight: 800; letter-spacing: -2px;
