@@ -934,18 +934,18 @@ export default function LiveDisplay() {
     const handleSpray = (tx) => {
       setFeed(prev => [tx, ...prev].slice(0, 50));
       setSprayCount(prev => prev + 1);
+setTotalXRP(prev => {
+  const newTotal = parseFloat((prev + parseFloat(tx.amountXRP || 0)).toFixed(6));
 
-      const newTotal = parseFloat((totalXRP + parseFloat(tx.amountXRP || 0)).toFixed(6));
-      setTotalXRP(newTotal);
+  const nextMilestone = MILESTONE_AMOUNTS.find(m => m > lastMilestoneRef.current && newTotal >= m);
+  if (nextMilestone) {
+    lastMilestoneRef.current = nextMilestone;
+    setMilestone(`🎊 ${nextMilestone} XRP sprayed!`);
+    setTimeout(() => setMilestone(null), 3500);
+  }
 
-      // Check milestones
-      const nextMilestone = MILESTONE_AMOUNTS.find(m => m > lastMilestoneRef.current && newTotal >= m);
-      if (nextMilestone) {
-        lastMilestoneRef.current = nextMilestone;
-        setMilestone(`🎊 ${nextMilestone} XRP sprayed!`);
-        setTimeout(() => setMilestone(null), 3500);
-      }
-
+  return newTotal;
+});
       // Coin rain — speed from spray payload (default 3s, fast = 1.5s, slow = 5s)
       const spraySpeed = tx.spraySpeed || 1; // 0..2 range, 1 = normal
       const baseDur    = 4 / spraySpeed;
