@@ -931,9 +931,14 @@ export default function LiveDisplay() {
       if (meta.name)        setEventName(meta.name);
     });
 
+ 
+  // rest of code...
+
     const handleSpray = (tx) => {
+       console.log("spray_rx:", tx.amountXRP, typeof tx.amountXRP);
       setFeed(prev => [tx, ...prev].slice(0, 50));
       setSprayCount(prev => prev + 1);
+      
 setTotalXRP(prev => {
   const newTotal = parseFloat((prev + parseFloat(tx.amountXRP || 0)).toFixed(6));
 
