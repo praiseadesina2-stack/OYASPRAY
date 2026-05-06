@@ -908,9 +908,12 @@ export default function LiveDisplay() {
     const socket = io(BACKEND_URL, { transports: ["websocket", "polling"] });
     socketRef.current = socket;
 
-    socket.on("connect",    () => setConnected(true));
+    socket.on("connect",    () => {
+      setConnected(true);
+      socket.emit("join_event", { eventId: id });
+    });
     socket.on("disconnect", () => setConnected(false));
-    socket.emit("join_event", { eventId: id });
+    
 
     socket.on("leaderboard_update", lb => setLeaderboard(lb));
 
